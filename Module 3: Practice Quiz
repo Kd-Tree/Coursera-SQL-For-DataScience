@@ -1,0 +1,60 @@
+Module 3: Practice Quiz
+
+/*
+Author: Kuldeep
+Email: 2018csm1014@iitrpr.ac.in
+/*
+
+Q1- How many albums does the artist Led Zeppelin have?
+	Code:
+			Select Count (AlbumId) As total
+			from albums
+			where ArtistId = (
+				Select ArtistId 
+				from artists
+				where Name = 'Led Zeppelin' )
+		
+	Ans: 14	
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Q2- Create a list of album titles and the unit prices for the artist "Audioslave".
+	Code:
+			Select albums.Title,tracks.UnitPrice
+			from albums
+			Inner Join tracks On albums.AlbumId=tracks.AlbumId
+			where ArtistId = (
+				Select ArtistId
+				from artists
+				where Name= 'Audioslave')
+				
+	Ans: 40
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Q3- Find the first and last name of any customer who does not have an invoice. Are there any customers returned from the query?
+	Code:
+			Select FirstName,LastName 
+			from customers 
+			where CustomerId = ( 
+				Select InvoiceId 
+				from invoices 
+				where InvoiceId is Null)
+				
+	Ans: No			
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Q4- Find the total price for each album.
+	Code:
+			Select albums.Title, Sum(tracks.UnitPrice)
+			from albums
+			Inner Join tracks On albums.AlbumId=tracks.AlbumId
+			Where Title = 'Big Ones'
+			
+	Ans: 14.85
+
+-------------------------------------------------------------------------------------------------------------------------------------	
+Q5- How many records are created when you apply a Cartesian join to the invoice and invoice items table?
+	Code:
+			Select Count(*) As total
+			from invoices CROSS Join invoice_items
+			
+	Ans: 922880
