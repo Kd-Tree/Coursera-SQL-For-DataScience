@@ -1,0 +1,41 @@
+Module 2: Quiz
+
+/*
+Author: Kuldeep
+Email: 2018csm1014@iitrpr.ac.in
+/*
+
+Q1- Filtering data is used to do which of the following? (select all that apply)
+Ans: All four options.
+
+Q2- You are doing an analysis on musicians that start with the letter “K”. Select the correct query that would retrieve only the artists whose name starts with this letter.
+Ans: SELECT name
+	 FROM Artists
+	 WHERE name LIKE ‘K%’
+	 
+Q3- A null and a zero value effectively mean the same thing. True or false?
+Ans: False
+
+Q4- Select all that are true regarding wildcards (Select all that apply.)
+Ans: 1- Wildcards take longer to run compared to a logical operator
+	 2-	Wildcards at the end of search patterns take longer to run
+
+Q5- Select the statements below that ARE NOT true of the ORDER BY clause (select all that apply).
+Ans: Can be anywhere in the select statement
+
+Q6- Select all of the valid math operators in SQL (select all that apply).
+Ans: +,-,/,*
+
+Q7- Which of the following is an aggregate function? (select all that apply)
+Ans: MIN(), COUNT(), MAX()
+
+Q8- Which of the following is true of GROUP BY clauses? (Select all that apply.)
+Ans: 1-	Every column in your select statement may/can be present in a group by clause, except for aggregated calculations.
+	 2-	GROUP BY clauses can contain multiple columns
+	 3-	NULLs will be grouped together if your Group By column contains NULLs
+	 
+Q9- Select the true statement below.
+Ans: HAVING filters after the data is grouped.
+
+Q10- Which is the correct order of occurrence in a SQL statement?
+Ans: Select, FROM, WHERE, GROUP By, HAVING
