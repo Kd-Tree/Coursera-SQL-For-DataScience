@@ -1,0 +1,80 @@
+Module 3: Coding Assignment
+
+/*
+Author: Kuldeep
+Email: 2018csm1014@iitrpr.ac.in
+/*
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Q1- Using a subquery, find the names of all the tracks for the album "Californication".
+	Code:
+			Select Name
+			from tracks
+			where AlbumId = (
+					Select AlbumId
+					from albums
+					where Title = 'Californication')
+					
+	Ans: Porcelain
+
+--------------------------------------------------------------------------------------------------------------------------------------	
+Q2- Find the total number of invoices for each customer along with the customer's full name, city and email.
+	Code:
+			Select c.FirstName, c.LastName,c.City, c.Email, Count (i.InvoiceId)
+			from Customers c
+			Inner join Invoices i on c.CustomerId = i.CustomerId
+			Group by c.CustomerId
+	
+	Ans: frantisekw@jetbrains.com
+
+--------------------------------------------------------------------------------------------------------------------------------------	
+Q3- Retrieve the track name, album, artistID, and trackID for all the albums.
+	Code:
+			Select t.TrackId, t.Name, al.Title, ar.ArtistId
+			from Tracks t
+			join Albums al on t.AlbumId=al.AlbumId
+			join Artists ar on al.ArtistId=ar.ArtistId
+			
+	Ans: Breaking The Rules
+
+--------------------------------------------------------------------------------------------------------------------------------------	
+Q4- Retrieve a list with the managers last name, and the last name of the employees who report to him or her.
+	Code:
+			Select emp.LastName As Employee, mgr.LastName As Manager
+			from Employees emp
+			left join Employees mgr on emp.ReportsTo = mgr.EmployeeId
+			
+	Ans: King, Callahan 
+
+--------------------------------------------------------------------------------------------------------------------------------------	
+Q5- Find the name and ID of the artists who do not have albums.
+	Code:
+			Select al.Title, ar.Name,ar.ArtistId
+			from Artists ar
+			left join Albums al on ar.ArtistId= al.ArtistId 
+			where al.Title is null
+			
+	Ans: Gilberto
+
+--------------------------------------------------------------------------------------------------------------------------------------	
+Q6- Use a UNION to create a list of all the employee's and customer's first names and last names ordered by the last name in descending order.
+	Code:
+			Select FirstName, LastName
+			from Employees
+			Union All
+			Select FirstName, LastName
+			from  Customers
+			group by LastName
+			order by LastName DESC
+			
+	Ans: Taylor
+
+--------------------------------------------------------------------------------------------------------------------------------------	
+Q7- See if there are any customers who have a different city listed in their billing city versus their customer city.
+	Code:
+			Select cus.FirstName,cus.LastName
+			from customers cus
+			join Invoices i on cus.CustomerId=i.CustomerId
+			where cus.city<>i.BillingCity
+			
+	Ans: No customers have a different city listed in their billing city versus customer city.
